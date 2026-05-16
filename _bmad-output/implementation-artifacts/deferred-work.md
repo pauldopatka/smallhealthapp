@@ -1,5 +1,11 @@
 # Deferred Work
 
+## From: Workout Log (spec-workout-log.md)
+
+- **Workout Plan / Templates** — Fester Wochenplan (z.B. Push/Pull/Legs). Zeigt oben auf der Workouts-Seite an, was als nächstes ansteht. Braucht eigene Firestore-Kollektion `workoutTemplates` und Logik für "nächstes anstehendes Workout".
+
+---
+
 ## From: Login — Firebase Auth (spec-login-firebase-auth.md)
 
 - **Post-login redirect to original route** — After login, user always lands on `/`. If they were redirected from e.g. `/weight`, they lose that context. Implement via `location.state.from` in ProtectedRoute + Login.tsx. (Low priority for single-user personal app)
