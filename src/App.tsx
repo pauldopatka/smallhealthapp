@@ -7,6 +7,7 @@ import Workouts from "./pages/Workouts";
 import Weight from "./pages/Weight";
 import Nutrition from "./pages/Nutrition";
 import Recipes from "./pages/Recipes";
+import RecipeDetail from "./pages/RecipeDetail";
 
 const navItems = [
   { to: "/", label: "Dashboard", icon: "📊" },
@@ -47,6 +48,7 @@ function AppLayout() {
           <Route path="/weight" element={<ProtectedRoute><Weight /></ProtectedRoute>} />
           <Route path="/nutrition" element={<ProtectedRoute><Nutrition /></ProtectedRoute>} />
           <Route path="/recipes" element={<ProtectedRoute><Recipes /></ProtectedRoute>} />
+          <Route path="/recipes/:id" element={<ProtectedRoute><RecipeDetail /></ProtectedRoute>} />
         </Routes>
       </main>
 
