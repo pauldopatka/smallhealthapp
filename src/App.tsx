@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import { BrowserRouter, Routes, Route, NavLink, useLocation } from "react-router-dom";
 import { AuthProvider, useAuth } from "./contexts/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -25,6 +26,51 @@ function Spinner() {
   );
 }
 
+function UserMenu() {
+  const { user, signOut } = useAuth();
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handler(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    }
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, []);
+
+  const initial = (user?.displayName?.[0] || user?.email?.[0] || "U").toUpperCase();
+
+  async function handleSignOut() {
+    setOpen(false);
+    try { await signOut(); } catch { /* already signed out or network issue */ }
+  }
+
+  return (
+    <div className="relative" ref={ref}>
+      <button
+        onClick={() => setOpen((v) => !v)}
+        className="w-8 h-8 rounded-full bg-emerald-700 hover:bg-emerald-600 flex items-center justify-center text-white text-sm font-bold transition-colors"
+      >
+        {initial}
+      </button>
+
+      {open && (
+        <div className="absolute right-0 top-full mt-2 z-20 bg-gray-900 border border-gray-700 rounded-xl shadow-xl w-52 py-2">
+          <p className="text-gray-500 text-xs px-4 py-1 truncate">{user?.email}</p>
+          <div className="border-t border-gray-800 my-1" />
+          <button
+            onClick={handleSignOut}
+            className="w-full text-left px-4 py-2 text-sm text-red-400 hover:bg-gray-800 transition-colors"
+          >
+            Abmelden
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function AppLayout() {
   const { loading } = useAuth();
   const location = useLocation();
@@ -35,8 +81,9 @@ function AppLayout() {
   return (
     <div className="min-h-screen bg-gray-950 text-white flex flex-col">
       {!isLoginPage && (
-        <header className="bg-gray-900 border-b border-gray-800 px-4 py-3 flex items-center gap-2">
+        <header className="bg-gray-900 border-b border-gray-800 px-4 py-3 flex items-center justify-between">
           <span className="text-xl font-bold text-emerald-400">FitTrack</span>
+          <UserMenu />
         </header>
       )}
 
