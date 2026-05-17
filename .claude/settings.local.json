@@ -2,7 +2,11 @@
   "permissions": {
     "allow": [
       "Bash(Get-ChildItem \"e:\\\\MySmallHealthApp\\\\smallhealthapp\")",
-      "Bash(python3 _bmad/scripts/resolve_customization.py --skill .claude/skills/bmad-quick-dev --key workflow)"
+      "Bash(python3 _bmad/scripts/resolve_customization.py --skill .claude/skills/bmad-quick-dev --key workflow)",
+      "PowerShell(New-Item -ItemType Directory -Force \"E:\\\\MySmallHealthApp\\\\smallhealthapp\\\\_bmad-output\\\\implementation-artifacts\")",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(code -r \"e:/MySmallHealthApp/smallhealthapp\" \"_bmad-output/implementation-artifacts/spec-login-firebase-auth.md\")"
     ]
   }
 }
