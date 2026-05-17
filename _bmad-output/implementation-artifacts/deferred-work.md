@@ -1,5 +1,14 @@
 # Deferred Work
 
+## From: Nutrition Tracker (spec-nutrition-tracker.md)
+
+- **Claude Foto-Analyse** — Mahlzeit fotografieren, Claude analysiert automatisch Kalorien + Makros. Braucht serverless Proxy (Firebase Functions / Vercel Edge) für Anthropic API Key.
+- **Makro-Ziele** — Separate Zielwerte für Protein/KH/Fett neben dem Kalorienziel.
+- **Wochen-Chart** — 7-Tage-Balkendiagramm der täglichen Kalorien.
+- **Mahlzeit löschen** — Einzelne Einträge entfernen.
+
+---
+
 ## From: Workout Log (spec-workout-log.md)
 
 - **Workout Plan / Templates** — Fester Wochenplan (z.B. Push/Pull/Legs). Zeigt oben auf der Workouts-Seite an, was als nächstes ansteht. Braucht eigene Firestore-Kollektion `workoutTemplates` und Logik für "nächstes anstehendes Workout".
