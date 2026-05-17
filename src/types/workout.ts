@@ -20,3 +20,19 @@ export interface Workout {
   date: Timestamp;
   exercises: WorkoutExercise[];
 }
+
+export interface TemplateSet {
+  targetReps?: number;
+}
+
+export interface TemplateExercise {
+  name: string;
+  unit: Unit;
+  sets: TemplateSet[];
+}
+
+export interface WorkoutTemplate {
+  id: string;
+  name: string;
+  exercises: TemplateExercise[];
+}
