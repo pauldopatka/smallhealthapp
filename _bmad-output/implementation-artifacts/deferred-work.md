@@ -1,5 +1,11 @@
 # Deferred Work
 
+## From: Dashboard (spec-dashboard-widgets.md)
+
+- **Trainings-Zyklus** — Dashboard-Widget das das nächste Training anzeigt. Zwei Modi (umschaltbar): (1) Warteschlange: Reihenfolge aus Templates, Abhaken → nächstes; (2) Feste Wochentage: z.B. Mo=Push, Mi=Pull, Fr=Legs. Eigene Firestore-Kollektion `trainingCycle`.
+
+---
+
 ## From: Nutrition Tracker (spec-nutrition-tracker.md)
 
 - **Claude Foto-Analyse** — Mahlzeit fotografieren, Claude analysiert automatisch Kalorien + Makros. Braucht serverless Proxy (Firebase Functions / Vercel Edge) für Anthropic API Key.
