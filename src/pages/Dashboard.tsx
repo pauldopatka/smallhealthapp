@@ -4,6 +4,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { subscribeToGoal, subscribeToMeals } from "@/lib/nutrition";
 import { subscribeToWeightEntries } from "@/lib/weight";
 import RingChart from "@/components/RingChart";
+import TrainingCycleWidget from "@/components/TrainingCycleWidget";
 import type { MealEntry, NutritionGoal } from "@/types/nutrition";
 import type { WeightEntry } from "@/types/weight";
 
@@ -72,6 +73,9 @@ export default function Dashboard() {
         <h1 className="text-2xl font-bold text-white">FitTrack 💪</h1>
         <p className="text-gray-500 text-sm">{getGreeting()}</p>
       </div>
+
+      {/* Training cycle widget */}
+      <TrainingCycleWidget />
 
       {/* Top row: calorie ring + weight */}
       <div className="grid grid-cols-2 gap-3">
